@@ -360,10 +360,10 @@ void chain_plugin::set_program_options(options_description& cli, options_descrip
          }), "Number of threads to use for EOS VM OC tier-up")
          ("eos-vm-oc-enable", bpo::value<chain::wasm_interface::vm_oc_enable>()->default_value(chain::wasm_interface::vm_oc_enable::oc_auto),
           "Enable EOS VM OC tier-up runtime ('auto', 'all', 'none').\n"
-          "'auto' - EOS VM OC tier-up is enabled for eosio.* accounts, read-only trxs, and except on producers applying blocks.\n"
+          "'auto' - EOS VM OC tier-up is enabled for vex.* accounts, read-only trxs, and except on producers applying blocks.\n"
           "'all'  - EOS VM OC tier-up is enabled for all contract execution.\n"
           "'none' - EOS VM OC tier-up is completely disabled.\n")
-         ("eos-vm-oc-whitelist", bpo::value<vector<string>>()->composing()->multitoken()->default_value(std::vector<string>{"xsat", "vaulta"}),
+         ("eos-vm-oc-whitelist", bpo::value<vector<string>>()->composing()->multitoken()->default_value(std::vector<string>{"vexcore"}),
           "EOS VM OC tier-up whitelist account suffixes for tier-up runtime 'auto'.")
 #endif
          ("enable-account-queries", bpo::value<bool>()->default_value(false), "enable queries to find accounts by various metadata.")
