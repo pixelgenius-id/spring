@@ -148,7 +148,7 @@ endif()
 include(utils)
 
 if ("${CORE_SYMBOL_NAME}" STREQUAL "")
-  set( CORE_SYMBOL_NAME "SYS" )
+  set( CORE_SYMBOL_NAME "VEX" )
 endif()
 string(TOUPPER ${CORE_SYMBOL_NAME} CORE_SYMBOL_NAME)
 
@@ -160,10 +160,10 @@ endif()
 message( STATUS "Using '${CORE_SYMBOL_NAME}' as CORE symbol name" )
 
 if ("${EOSIO_ROOT_KEY}" STREQUAL "")
-   set(EOSIO_ROOT_KEY "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV")
+   set(EOSIO_ROOT_KEY "VEX6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV")
 endif()
 
-message( STATUS "Using '${EOSIO_ROOT_KEY}' as public key for 'eosio' account" )
+message( STATUS "Using '${EOSIO_ROOT_KEY}' as public key for 'vexcore' account" )
 
 option(ENABLE_TCMALLOC "use tcmalloc (requires gperftools)" OFF)
 if( ENABLE_TCMALLOC )
