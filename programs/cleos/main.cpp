@@ -566,7 +566,7 @@ void print_action( const fc::variant& at ) {
    auto console = at["console"].as_string();
 
    /*
-   if( code == "eosio" && func == "setcode" )
+   if( code == "vexcore" && func == "setcode" )
       args = args.substr(40)+"...";
    if( name(code) == config::system_account_name && func == "setabi" )
       args = args.substr(40)+"...";
@@ -929,7 +929,7 @@ asset to_asset( account_name code, const string& s ) {
 }
 
 inline asset to_asset( const string& s ) {
-   return to_asset( "eosio.token"_n, s );
+   return to_asset( "vex.token"_n, s );
 }
 
 struct set_account_permission_subcommand {
@@ -2383,8 +2383,8 @@ protocol_features_t get_supported_protocol_features() {
 
 struct activate_subcommand {
    string feature_name_str;
-   std::string account_str = "eosio";
-   std::string permission_str = "eosio";
+   std::string account_str = "vexcore";
+   std::string permission_str = "vexcore";
 
    activate_subcommand(CLI::App* actionRoot) {
       auto activate = actionRoot->add_subcommand("activate", localized("Activate protocol feature by name"));
@@ -2513,7 +2513,7 @@ void get_account( const string& accountName, const string& coresym, bool json_fo
       }
 
       // print linked actions
-      std::cout << indent << "eosio.any: " << std::endl;
+      std::cout << indent << "vex.any: " << std::endl;
       for (const auto& it : res.eosio_any_linked_actions) {
          auto action_value = it.action ? it.action->to_string() : std::string("*");
          std::cout << indent << indent << it.account << "::" << action_value << std::endl;
@@ -3621,7 +3621,7 @@ int main( int argc, char** argv ) {
    auto setActionPermission = set_action_permission_subcommand(setAction);
 
    // Transfer subcommand
-   string con = "eosio.token";
+   string con = "vex.token";
    string sender;
    string recipient;
    string amount;
@@ -4092,7 +4092,7 @@ int main( int argc, char** argv ) {
          ("requested", requested_perm_var)
          ("trx", trx_var);
 
-      send_actions({chain::action{accountPermissions, "eosio.msig"_n, "propose"_n, variant_to_bin( "eosio.msig"_n, "propose"_n, args ) }}, signing_keys_opt.get_keys());
+      send_actions({chain::action{accountPermissions, "vex.msig"_n, "propose"_n, variant_to_bin( "vex.msig"_n, "propose"_n, args ) }}, signing_keys_opt.get_keys());
    });
 
    //multisig propose transaction
@@ -4125,7 +4125,7 @@ int main( int argc, char** argv ) {
          ("requested", requested_perm_var)
          ("trx", trx_var);
 
-      send_actions({chain::action{accountPermissions, "eosio.msig"_n, "propose"_n, variant_to_bin( "eosio.msig"_n, "propose"_n, args ) }}, signing_keys_opt.get_keys());
+      send_actions({chain::action{accountPermissions, "vex.msig"_n, "propose"_n, variant_to_bin( "vex.msig"_n, "propose"_n, args ) }}, signing_keys_opt.get_keys());
    });
 
 
@@ -4138,7 +4138,7 @@ int main( int argc, char** argv ) {
 
    review->callback([&] {
       const auto result1 = call(get_table_func, fc::mutable_variant_object("json", true)
-                                 ("code", "eosio.msig")
+                                 ("code", "vex.msig")
                                  ("scope", proposer)
                                  ("table", "proposal")
                                  ("table_key", "")
@@ -4174,7 +4174,7 @@ int main( int argc, char** argv ) {
 
          try {
             const auto& result2 = call(get_table_func, fc::mutable_variant_object("json", true)
-                                       ("code", "eosio.msig")
+                                       ("code", "vex.msig")
                                        ("scope", proposer)
                                        ("table", "approvals2")
                                        ("table_key", "")
@@ -4204,7 +4204,7 @@ int main( int argc, char** argv ) {
             }
          } else {
             const auto result3 = call(get_table_func, fc::mutable_variant_object("json", true)
-                                       ("code", "eosio.msig")
+                                       ("code", "vex.msig")
                                        ("scope", proposer)
                                        ("table", "approvals")
                                        ("table_key", "")
@@ -4237,8 +4237,8 @@ int main( int argc, char** argv ) {
          if( new_multisig ) {
             for( auto& a : provided_approvers ) {
                const auto result4 = call(get_table_func, fc::mutable_variant_object("json", true)
-                                          ("code", "eosio.msig")
-                                          ("scope", "eosio.msig")
+                                          ("code", "vex.msig")
+                                          ("scope", "vex.msig")
                                           ("table", "invals")
                                           ("table_key", "")
                                           ("lower_bound", a.first.to_uint64_t())
@@ -4340,7 +4340,7 @@ int main( int argc, char** argv ) {
       }
 
       auto accountPermissions = get_account_permissions(tx_permission, {name(proposer), config::active_name});
-      send_actions({chain::action{accountPermissions, "eosio.msig"_n, name(action), variant_to_bin( "eosio.msig"_n, name(action), args ) }}, signing_keys_opt.get_keys());
+      send_actions({chain::action{accountPermissions, "vex.msig"_n, name(action), variant_to_bin( "vex.msig"_n, name(action), args ) }}, signing_keys_opt.get_keys());
    };
 
    // multisig approve
@@ -4370,7 +4370,7 @@ int main( int argc, char** argv ) {
          ("account", invalidator);
 
       auto accountPermissions = get_account_permissions(tx_permission, {name(invalidator), config::active_name});
-      send_actions({chain::action{accountPermissions, "eosio.msig"_n, "invalidate"_n, variant_to_bin( "eosio.msig"_n, "invalidate"_n, args ) }}, signing_keys_opt.get_keys());
+      send_actions({chain::action{accountPermissions, "vex.msig"_n, "invalidate"_n, variant_to_bin( "vex.msig"_n, "invalidate"_n, args ) }}, signing_keys_opt.get_keys());
    });
 
    // multisig cancel
@@ -4397,7 +4397,7 @@ int main( int argc, char** argv ) {
          ("proposal_name", proposal_name)
          ("canceler", canceler);
 
-      send_actions({chain::action{accountPermissions, "eosio.msig"_n, "cancel"_n, variant_to_bin( "eosio.msig"_n, "cancel"_n, args ) }}, signing_keys_opt.get_keys());
+      send_actions({chain::action{accountPermissions, "vex.msig"_n, "cancel"_n, variant_to_bin( "vex.msig"_n, "cancel"_n, args ) }}, signing_keys_opt.get_keys());
       }
    );
 
@@ -4426,7 +4426,7 @@ int main( int argc, char** argv ) {
          ("proposal_name", proposal_name)
          ("executer", executer);
 
-      send_actions({chain::action{accountPermissions, "eosio.msig"_n, "exec"_n, variant_to_bin( "eosio.msig"_n, "exec"_n, args ) }}, signing_keys_opt.get_keys());
+      send_actions({chain::action{accountPermissions, "vex.msig"_n, "exec"_n, variant_to_bin( "vex.msig"_n, "exec"_n, args ) }}, signing_keys_opt.get_keys());
       }
    );
 
@@ -4435,7 +4435,7 @@ int main( int argc, char** argv ) {
    wrap->require_subcommand();
 
    // wrap exec
-   string wrap_con = "eosio.wrap";
+   string wrap_con = "vex.wrap";
    executer = "";
    string trx_to_exec;
    auto wrap_exec = wrap->add_subcommand("exec", localized("Execute a transaction while bypassing authorization checks"));

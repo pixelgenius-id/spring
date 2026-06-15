@@ -2513,7 +2513,7 @@ read_only::get_account_return_t read_only::get_account( const get_account_params
    
    if( abi_def abi; abi_serializer::to_abi(code_account.abi, abi) ) {
 
-      const auto token_code = "eosio.token"_n;
+      const auto token_code = "vex.token"_n;
 
       auto core_symbol = extract_core_symbol();
 
@@ -2650,7 +2650,7 @@ chain::symbol read_only::extract_core_symbol()const {
 
    // The following code makes assumptions about the contract deployed on eosio account (i.e. the system contract) and how it stores its data.
    const auto& d = db.db();
-   const auto* t_id = d.find<chain::table_id_object, chain::by_code_scope_table>(boost::make_tuple( "eosio"_n, "eosio"_n, "rammarket"_n ));
+   const auto* t_id = d.find<chain::table_id_object, chain::by_code_scope_table>(boost::make_tuple( "vexcore"_n, "vexcore"_n, "rammarket"_n ));
    if( t_id != nullptr ) {
       const auto &idx = d.get_index<key_value_index, by_scope_primary>();
       auto it = idx.find(boost::make_tuple( t_id->id, eosio::chain::string_to_symbol_c(4,"RAMCORE") ));
