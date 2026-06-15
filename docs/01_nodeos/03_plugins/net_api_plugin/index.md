@@ -17,11 +17,11 @@ See [Net API Reference Documentation](https://docs.eosnetwork.com/spring-plugins
 
 ```console
 # config.ini
-plugin = eosio::net_api_plugin
+plugin = vexcore::net_api_plugin
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::net_api_plugin
+nodeos ... --plugin vexcore::net_api_plugin
 ```
 
 ## Options
@@ -37,13 +37,13 @@ None
 
 ```console
 # config.ini
-plugin = eosio::net_plugin
+plugin = vexcore::net_plugin
 [options]
-plugin = eosio::http_plugin
+plugin = vexcore::http_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::net_plugin [options]  \
-           --plugin eosio::http_plugin [options]
+nodeos ... --plugin vexcore::net_plugin [options]  \
+           --plugin vexcore::http_plugin [options]
 ```

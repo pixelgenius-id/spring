@@ -24,10 +24,10 @@ cleos convert pack_transaction '{
   "delay_sec": 0,
   "context_free_actions": [],
   "actions": [{
-      "account": "eosio",
+      "account": "vexcore",
       "name": "newaccount",
       "authorization": [{
-          "actor": "eosio",
+          "actor": "vexcore",
           "permission": "active"
         }
       ],

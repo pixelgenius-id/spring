@@ -2,11 +2,11 @@
 content_title: Storage and Read Modes
 ---
 
-The Antelope platform stores blockchain information in various data structures at various stages of a transaction's lifecycle. Some of these are described below. The producing node is the `nodeos` instance run by the block producer who is currently creating blocks for the blockchain (which changes every 6 seconds, producing 12 blocks in sequence before switching to another producer.)
+The Vexanium platform stores blockchain information in various data structures at various stages of a transaction's lifecycle. Some of these are described below. The producing node is the `nodeos` instance run by the block producer who is currently creating blocks for the blockchain (which changes every 6 seconds, producing 12 blocks in sequence before switching to another producer.)
 
 ## Blockchain State and Storage
 
-Every `nodeos` instance creates some internal files to housekeep the blockchain state. These files reside in the `~/eosio/nodeos/data` installation directory and their purpose is described below:
+Every `nodeos` instance creates some internal files to housekeep the blockchain state. These files reside in the `~/vexcore/nodeos/data` installation directory and their purpose is described below:
 
 * The `blocks.log` is an append only log of blocks written to disk and contains all the irreversible blocks. These blocks contain final, confirmed transactions.
 * `reversible_blocks` is a memory mapped file and contains blocks that have been written to the blockchain but have not yet become irreversible. These blocks contain valid pushed transactions that still await confirmation to become final via the consensus protocol. The head block is the last block written to the blockchain, stored in `reversible_blocks`.
@@ -15,9 +15,9 @@ Every `nodeos` instance creates some internal files to housekeep the blockchain 
 * The `pending block` is an in memory block containing transactions as they are processed and pushed into the block; this will/may eventually become the head block. If the `nodeos` instance is the producing node, the pending block is distributed to other `nodeos` instances.
 * Outside the chain state, block data is cached in RAM until it becomes final/irreversible; especifically the signed block itself. After the last irreversible block (LIB) catches up to the block, that block is then retrieved from the irreversible blocks log.
 
-## Antelope Interfaces
+## Vexanium Interfaces
 
-Antelope provides a set of [services](../../) and [interfaces](https://docs.eosnetwork.com/cdt/latest/reference/Files/) that enable contract developers to persist state across action, and consequently transaction, boundaries. Contracts may use these services and interfaces for various purposes. For example, `eosio.token` contract keeps balances for all users in the chain database. Each instance of `nodeos` keeps the database in memory, so contracts can read and write data with ease.
+Vexanium provides a set of [services](../../) and [interfaces](https://docs.eosnetwork.com/cdt/latest/reference/Files/) that enable contract developers to persist state across action, and consequently transaction, boundaries. Contracts may use these services and interfaces for various purposes. For example, `vex.token` contract keeps balances for all users in the chain database. Each instance of `nodeos` keeps the database in memory, so contracts can read and write data with ease.
 
 ### Nodeos RPC API
 
@@ -57,4 +57,4 @@ In speculative mode `nodeos` is able to execute transactions which have TaPoS (T
 
 ## How To Specify the Read Mode
 
-The mode in which `nodeos` is run can be specified using the `--read-mode` option from the `eosio::chain_plugin`.
+The mode in which `nodeos` is run can be specified using the `--read-mode` option from the `vexcore::chain_plugin`.

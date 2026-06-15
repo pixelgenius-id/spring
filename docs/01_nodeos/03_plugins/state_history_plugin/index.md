@@ -7,12 +7,12 @@ The `state_history_plugin` is useful for capturing historical data about the blo
 
 ```console
 # config.ini
-plugin = eosio::state_history_plugin
+plugin = vexcore::state_history_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::state_history_plugin [operations] [options]
+nodeos ... --plugin vexcore::state_history_plugin [operations] [options]
 ```
 
 ## Operations
@@ -20,7 +20,7 @@ nodeos ... --plugin eosio::state_history_plugin [operations] [options]
 These can only be specified from the `nodeos` command-line:
 
 ```console
-Command Line Options for eosio::state_history_plugin:
+Command Line Options for vexcore::state_history_plugin:
 
   --delete-state-history                clear state history files
 ```
@@ -30,7 +30,7 @@ Command Line Options for eosio::state_history_plugin:
 These can be specified from both the `nodeos` command-line or the `config.ini` file:
 
 ```console
-Config Options for eosio::state_history_plugin:
+Config Options for vexcore::state_history_plugin:
   --state-history-dir arg (="state-history")
                                         the location of the state-history
                                         directory (absolute path or relative to

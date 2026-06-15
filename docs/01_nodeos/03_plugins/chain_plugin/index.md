@@ -1,17 +1,17 @@
 ## Description
 
-The `chain_plugin` is a core plugin required to process and aggregate chain data on an Antelope node.
+The `chain_plugin` is a core plugin required to process and aggregate chain data on an Vexanium node.
 
 ## Usage
 
 ```console
 # config.ini
-plugin = eosio::chain_plugin
+plugin = vexcore::chain_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_plugin [operations] [options]
+nodeos ... --plugin vexcore::chain_plugin [operations] [options]
 ```
 
 ## Operations
@@ -19,7 +19,7 @@ nodeos ... --plugin eosio::chain_plugin [operations] [options]
 These can only be specified from the `nodeos` command-line:
 
 ```console
-Command Line Options for eosio::chain_plugin:
+Command Line Options for vexcore::chain_plugin:
   --genesis-json arg                    File to read Genesis State from
   --genesis-timestamp arg               override the initial timestamp in the
                                         Genesis State file
@@ -57,7 +57,7 @@ Command Line Options for eosio::chain_plugin:
 These can be specified from both the `nodeos` command-line or the `config.ini` file:
 
 ```console
-Config Options for eosio::chain_plugin:
+Config Options for vexcore::chain_plugin:
   --blocks-dir arg (="blocks")          the location of the blocks directory
                                         (absolute path or relative to
                                         application data dir)
@@ -228,7 +228,7 @@ Config Options for eosio::chain_plugin:
   --eos-vm-oc-enable arg (=auto)        Enable EOS VM OC tier-up runtime
                                         ('auto', 'all', 'none').
                                         'auto' - EOS VM OC tier-up is enabled
-                                        for eosio.* accounts, read-only trxs,
+                                        for vexcore.* accounts, read-only trxs,
                                         and except on producers applying
                                         blocks.
                                         'all'  - EOS VM OC tier-up is enabled

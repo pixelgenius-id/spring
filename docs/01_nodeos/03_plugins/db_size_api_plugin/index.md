@@ -29,13 +29,13 @@ None
 
 ```console
 # config.ini
-plugin = eosio::chain_plugin
+plugin = vexcore::chain_plugin
 [options]
-plugin = eosio::http_plugin
+plugin = vexcore::http_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_plugin [operations] [options]  \
-           --plugin eosio::http_plugin [options]
+nodeos ... --plugin vexcore::chain_plugin [operations] [options]  \
+           --plugin vexcore::http_plugin [options]
 ```

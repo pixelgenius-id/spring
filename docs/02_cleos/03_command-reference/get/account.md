@@ -10,10 +10,10 @@ Retrieves an account from the blockchain
 
 ## Examples
 
-### Get formatted data for user **eosio**
+### Get formatted data for user **vexcore**
 
 ```sh
-cleos get account eosio
+cleos get account vexcore
 ```
 ```console
 privileged: true
@@ -35,14 +35,14 @@ cpu bandwidth: (averaged over 3 days)
 
 producers:     <not voted>
 ```
-### Get JSON data for user **eosio**
+### Get JSON data for user **vexcore**
 
 ```sh
-cleos get account eosio --json
+cleos get account vexcore --json
 ```
 ```json
 {
-  "account_name": "eosio",
+  "account_name": "vexcore",
   "privileged": true,
   "last_code_update": "2018-05-23T18:00:25.500",
   "created": "2018-03-02T12:00:00.000",
@@ -91,7 +91,7 @@ cleos get account eosio --json
   "total_resources": null,
   "delegated_bandwidth": null,
   "voter_info": {
-    "owner": "eosio",
+    "owner": "vexcore",
     "proxy": "",
     "producers": [],
     "staked": 0,

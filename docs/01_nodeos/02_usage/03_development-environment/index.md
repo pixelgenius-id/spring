@@ -19,7 +19,7 @@ While this option can technically be used for smart contract development, it may
 
 ## Third-Party Testnets
 
-The following third-party testnets are available for testing Antelope dApps and smart contracts:
+The following third-party testnets are available for testing Vexanium dApps and smart contracts:
 
 * Jungle Testnet [monitor](https://monitor.jungletestnet.io/), [website](https://jungletestnet.io/)
 * [CryptoKylin Testnet](https://www.cryptokylin.io/)

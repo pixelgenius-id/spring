@@ -9,10 +9,10 @@ The `wallet_api_plugin` exposes functionality from the [`wallet_plugin`](../wall
 
 ```sh
 # config.ini
-plugin = eosio::wallet_api_plugin
+plugin = vexcore::wallet_api_plugin
 
 # command-line
-keosd ... --plugin eosio::wallet_api_plugin
+keosd ... --plugin vexcore::wallet_api_plugin
 ```
 
 ## Options
@@ -30,12 +30,12 @@ The following plugins are loaded with default settings if not specified on the c
 
 ```sh
 # config.ini
-plugin = eosio::wallet_plugin
+plugin = vexcore::wallet_plugin
 [options]
-plugin = eosio::http_plugin
+plugin = vexcore::http_plugin
 [options]
 
 # command-line
-keosd ... --plugin eosio::wallet_plugin [options]  \
-           --plugin eosio::http_plugin [options]
+keosd ... --plugin vexcore::wallet_plugin [options]  \
+           --plugin vexcore::http_plugin [options]
 ```

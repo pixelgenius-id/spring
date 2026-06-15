@@ -18,8 +18,8 @@ You can use `blocks-dir = "blocks"` in the `config.ini` file, or use the `--bloc
 
 ```sh
 nodeos --replay-blockchain \
-  --plugin eosio::producer_plugin  \
-  --plugin eosio::chain_api_plugin \
-  --plugin eosio::http_plugin      \
+  --plugin vexcore::producer_plugin  \
+  --plugin vexcore::chain_api_plugin \
+  --plugin vexcore::http_plugin      \
   >> nodeos.log 2>&1 &
 ```

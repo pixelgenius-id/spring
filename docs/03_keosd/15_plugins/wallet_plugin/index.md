@@ -9,10 +9,10 @@ The `wallet_plugin` adds access to wallet functionality from a node.
 
 ```sh
 # config.ini
-plugin = eosio::wallet_plugin
+plugin = vexcore::wallet_plugin
 
 # command-line
-nodeos ... --plugin eosio::wallet_plugin
+nodeos ... --plugin vexcore::wallet_plugin
 ```
 
 ## Options
@@ -30,12 +30,12 @@ None
 
 ```sh
 # config.ini
-plugin = eosio::wallet_plugin
+plugin = vexcore::wallet_plugin
 [options]
-plugin = eosio::http_plugin
+plugin = vexcore::http_plugin
 [options]
 
 # command-line
-nodeos ... --plugin eosio::wallet_plugin [options]  \
-           --plugin eosio::http_plugin [options]
+nodeos ... --plugin vexcore::wallet_plugin [options]  \
+           --plugin vexcore::http_plugin [options]
 ```

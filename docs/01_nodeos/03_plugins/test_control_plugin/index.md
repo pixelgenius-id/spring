@@ -9,11 +9,11 @@ This is intended for testing, to determine exactly when a `nodeos` instance will
 
 ```console
 # config.ini
-plugin = eosio::test_control_plugin
+plugin = vexcore::test_control_plugin
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::test_control_plugin
+nodeos ... --plugin vexcore::test_control_plugin
 ```
 
 ## Options
@@ -28,10 +28,10 @@ None
 
 ```console
 # config.ini
-plugin = eosio::chain_plugin
+plugin = vexcore::chain_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_plugin [operations] [options]
+nodeos ... --plugin vexcore::chain_plugin [operations] [options]
 ```

@@ -12,7 +12,7 @@ From json action data to packed form
 
 ## Usage
 ```sh
- cleos convert pack_action_data eosio unlinkauth '{"account":"test1", "code":"test2", "type":"eosioeosio"}'
+ cleos convert pack_action_data vexcore unlinkauth '{"account":"test1", "code":"test2", "type":"eosioeosio"}'
 ```
 
 ## Output

@@ -10,7 +10,7 @@ This section describes how to set up a multi-node blockchain configuration runni
 
 ## Before you begin
 
-* [Install the Antelope software](../../../00_install/index.md) before starting this section.
+* [Install the Vexanium software](../../../00_install/index.md) before starting this section.
 * It is assumed that `nodeos`, `cleos`, and `keosd` are accessible through the path.
 * Know how to pass [Nodeos options](../../02_usage/00_nodeos-options.md) to enable or disable functionality.
 
@@ -20,7 +20,7 @@ Open four "terminal" windows and perform the following steps:
 
 1. [Start the Wallet Manager](#1-start-the-wallet-manager)
 2. [Create a Default Wallet](#2-create-a-default-wallet)
-3. [Loading the Antelope Key](#3-loading-the-antelope-key)
+3. [Loading the Vexanium Key](#3-loading-the-antelope-key)
 4. [Start the First Producer Node](#4-start-the-first-producer-node)
 5. [Start the Second Producer Node](#5-start-the-second-producer-node)
 6. [Get Nodes Info](#6-get-nodes-info)
@@ -66,7 +66,7 @@ Without password imported keys will not be retrievable.
 
 `keosd` will generate some status output in its window. We will continue to use this second window for subsequent `cleos` commands.
 
-### 3. Loading the Antelope Key
+### 3. Loading the Vexanium Key
 
 The private blockchain launched in the steps above is created with a default initial key which must be loaded into the wallet.
 
@@ -83,7 +83,7 @@ imported private key for: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 We can now start the first producer node. In the third terminal window run:
 
 ```sh
-nodeos --enable-stale-production --producer-name eosio --plugin eosio::chain_api_plugin --plugin eosio::net_api_plugin
+nodeos --enable-stale-production --producer-name vexcore --plugin vexcore::chain_api_plugin --plugin vexcore::net_api_plugin
 ```
 
 This creates a special producer, known as the "bios" producer. Assuming everything has executed correctly to this point, you should see output from the `nodeos` process reporting block creation.
@@ -91,12 +91,12 @@ This creates a special producer, known as the "bios" producer. Assuming everythi
 ### 5. Start the Second Producer Node
 
 [//]: # (don't render for now)
-[//]: # (The following commands assume that you are running this tutorial from the `eos\build` directory, from which you ran `./eosio_build.sh` to build the Antelope binaries.)
+[//]: # (The following commands assume that you are running this tutorial from the `eos\build` directory, from which you ran `./eosio_build.sh` to build the Vexanium binaries.)
 
-To start additional nodes, you must first load the `eosio.bios` contract. This contract enables you to have direct control over the resource allocation of other accounts and to access other privileged API calls. Return to the second terminal window and run the following command to load the contract:
+To start additional nodes, you must first load the `vexcore.bios` contract. This contract enables you to have direct control over the resource allocation of other accounts and to access other privileged API calls. Return to the second terminal window and run the following command to load the contract:
 
 ```sh
-cleos --wallet-url http://127.0.0.1:8899 set contract eosio build/contracts/eosio.bios
+cleos --wallet-url http://127.0.0.1:8899 set contract vexcore build/contracts/vexcore.bios
 ```
 
 We will create an account to become a producer, using the account name `inita`.  To create the account, we need to generate keys to associate with the account, and import those into our wallet.
@@ -130,12 +130,12 @@ imported private key for: EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg
 Create the `inita` account that we will use to become a producer. The `create account` command requires two public keys, one for the account's owner key and one for its active key.  In this example, the newly created public key is used twice, as both the owner key and the active key. Example output from the create command is shown:
 
 ```sh
-cleos --wallet-url http://127.0.0.1:8899 create account eosio inita EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg
+cleos --wallet-url http://127.0.0.1:8899 create account vexcore inita EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg
 ```
 
 ```console
 executed transaction: d1ea511977803d2d88f46deb554f5b6cce355b9cc3174bec0da45fc16fe9d5f3  352 bytes  102400 cycles
-#         eosio <= eosio::newaccount            {"creator":"eosio","name":"inita","owner":{"threshold":1,"keys":[{"key":"EOS6hMjoWRF2L8x9YpeqtUEcsDK...
+#         vexcore <= vexcore::newaccount            {"creator":"vexcore","name":"inita","owner":{"threshold":1,"keys":[{"key":"EOS6hMjoWRF2L8x9YpeqtUEcsDK...
 ```
 
 We now have an account that is available to have a contract assigned to it, enabling it to do meaningful work. In other tutorials, the account has been used to establish simple contracts. In this case, the account will be designated as a block producer.
@@ -143,7 +143,7 @@ We now have an account that is available to have a contract assigned to it, enab
 In the fourth terminal window, start a second `nodeos` instance. Notice that this command line is substantially longer than the one we used above to create the first producer. This is necessary to avoid collisions with the first `nodeos` instance. Fortunately, you can just cut and paste this command line and adjust the keys:
 
 ```sh
-nodeos --producer-name inita --plugin eosio::chain_api_plugin --plugin eosio::net_api_plugin --http-server-address 127.0.0.1:8889 --p2p-listen-endpoint 127.0.0.1:9877 --p2p-peer-address 127.0.0.1:9876 --config-dir node2 --data-dir node2 --signature-provider EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg=KEY:5JgbL2ZnoEAhTudReWH1RnMuQS6DBeLZt4ucV6t8aymVEuYg7sr
+nodeos --producer-name inita --plugin vexcore::chain_api_plugin --plugin vexcore::net_api_plugin --http-server-address 127.0.0.1:8889 --p2p-listen-endpoint 127.0.0.1:9877 --p2p-peer-address 127.0.0.1:9876 --config-dir node2 --data-dir node2 --signature-provider EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg=KEY:5JgbL2ZnoEAhTudReWH1RnMuQS6DBeLZt4ucV6t8aymVEuYg7sr
 ```
 
 The output from this new node will show a little activity but will stop reporting until the last step in this tutorial, when the `inita` account is registered as a producer account and activated. Here is some example output from a newly started node. Your output might look a little different, depending on how much time you took entering each of these commands. Furthermore, this example is only the last few lines of output:
@@ -157,18 +157,18 @@ The output from this new node will show a little activity but will stop reportin
 2395680ms thread-0   net_plugin.cpp:1385           recv_notice          ] sync_manager got last irreversible block notice
 2395680ms thread-0   net_plugin.cpp:1271           start_sync           ] Catching up with chain, our last req is 8248, theirs is 8255 peer dhcp15.ociweb.com:9876 - 295f5fd
 2396002ms thread-0   producer_plugin.cpp:226       block_production_loo ] Previous result occurred 5 times
-2396002ms thread-0   producer_plugin.cpp:244       block_production_loo ] Not producing block because it isn't my turn, its eosio
+2396002ms thread-0   producer_plugin.cpp:244       block_production_loo ] Not producing block because it isn't my turn, its vexcore
 ```
 
 At this point, the second `nodeos` is an idle producer. To turn it into an active producer, `inita` needs to be registered as a producer with the bios node, and the bios node needs to perform an action to update the producer schedule.
 
 ```sh
-cleos --wallet-url http://127.0.0.1:8899 push action eosio setprods "{ \"schedule\": [{\"producer_name\": \"inita\",\"block_signing_key\": \"EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg\"}]}" -p eosio@active
+cleos --wallet-url http://127.0.0.1:8899 push action vexcore setprods "{ \"schedule\": [{\"producer_name\": \"inita\",\"block_signing_key\": \"EOS6hMjoWRF2L8x9YpeqtUEcsDKAyxSuM1APicxgRU1E3oyV5sDEg\"}]}" -p vexcore@active
 ```
 
 ```console
 executed transaction: 2cff4d96814752aefaf9908a7650e867dab74af02253ae7d34672abb9c58235a  272 bytes  105472 cycles
-#         eosio <= eosio::setprods              {"version":1,"producers":[{"producer_name":"inita","block_signing_key":"EOS6hMjoWRF2L8x9YpeqtUEcsDKA...
+#         vexcore <= vexcore::setprods              {"version":1,"producers":[{"producer_name":"inita","block_signing_key":"EOS6hMjoWRF2L8x9YpeqtUEcsDKA...
 ```
 
 Congratulations, you have now configured a two-node testnet! You can see that the original node is no longer producing blocks but it is receiving them. You can verify this by running the `get info` commmand against each node.

@@ -1,6 +1,6 @@
 ## Overview
 
-This how-to guide provides instructions on how to retrieve infomation of an Antelope transaction using a transaction ID.
+This how-to guide provides instructions on how to retrieve infomation of an Vexanium transaction using a transaction ID.
 
 The example in this how-to retrieves transaction information associated with the creation of the account **bob**.
 
@@ -9,8 +9,8 @@ The example in this how-to retrieves transaction information associated with the
 Make sure you meet the following requirements:
 * Install the currently supported version of `cleos`.
 [[info | Note]]
-| `cleos` is bundled with the Antelope software. [Installing Antelope](../../00_install/index.md) will also install `cleos`.
-* Understand how transactions work in an Antelope blockchain. For more information on transactions, see the [Transactions Protocol](/protocol-guides/02_transactions_protocol.md) section.
+| `cleos` is bundled with the Vexanium software. [Installing Vexanium](../../00_install/index.md) will also install `cleos`.
+* Understand how transactions work in an Vexanium blockchain. For more information on transactions, see the [Transactions Protocol](/protocol-guides/02_transactions_protocol.md) section.
 
 ## Command Reference
 
@@ -59,15 +59,15 @@ The `cleos` command returns detailed information of the transaction:
       "delay_sec": 0,
       "context_free_actions": [],
       "actions": [{
-          "account": "eosio",
+          "account": "vexcore",
           "name": "newaccount",
           "authorization": [{
-              "actor": "eosio",
+              "actor": "vexcore",
               "permission": "active"
             }
           ],
           "data": {
-            "creator": "eosio",
+            "creator": "vexcore",
             "name": "bob",
             "owner": {
               "threshold": 1,
@@ -108,29 +108,29 @@ The `cleos` command returns detailed information of the transaction:
       "creator_action_ordinal": 0,
       "closest_unnotified_ancestor_action_ordinal": 0,
       "receipt": {
-        "receiver": "eosio",
+        "receiver": "vexcore",
         "act_digest": "2640ce4d4a789393dec3b7938cea2f78c5669498d0d22adeab9204c489c2cfd6",
         "global_sequence": 256,
         "recv_sequence": 256,
         "auth_sequence": [[
-            "eosio",
+            "vexcore",
             256
           ]
         ],
         "code_sequence": 0,
         "abi_sequence": 0
       },
-      "receiver": "eosio",
+      "receiver": "vexcore",
       "act": {
-        "account": "eosio",
+        "account": "vexcore",
         "name": "newaccount",
         "authorization": [{
-            "actor": "eosio",
+            "actor": "vexcore",
             "permission": "active"
           }
         ],
         "data": {
-          "creator": "eosio",
+          "creator": "vexcore",
           "name": "bob",
           "owner": {
             "threshold": 1,
@@ -190,7 +190,7 @@ cleos get transaction 509eee3aa8988d533a336fec7a4c8b067ae3205cd97e2d27b3e9a2da61
 ```
 ```console
 Error 3110003: Missing History API Plugin
-Ensure that you have eosio::history_api_plugin added to your node's configuration!
+Ensure that you have vexcore::history_api_plugin added to your node's configuration!
 Error Details:
 History API plugin is not enabled
 ```

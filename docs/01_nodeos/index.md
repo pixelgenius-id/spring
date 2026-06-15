@@ -4,11 +4,11 @@ content_title: Nodeos
 
 ## Introduction
 
-`nodeos` is the core service daemon that runs on every Antelope node. It can be configured to process smart contracts, validate transactions, produce blocks containing valid transactions, and confirm blocks to record them on the blockchain.
+`nodeos` is the core service daemon that runs on every Vexanium node. It can be configured to process smart contracts, validate transactions, produce blocks containing valid transactions, and confirm blocks to record them on the blockchain.
 
 ## Installation
 
-`nodeos` is distributed as part of the [Antelope software suite](https://github.com/AntelopeIO/spring). To install `nodeos`, visit the [Antelope Software Installation](../00_install/index.md) section.
+`nodeos` is distributed as part of the [Vexanium software suite](https://github.com/pixelgenius-id/spring). To install `nodeos`, visit the [Vexanium Software Installation](../00_install/index.md) section.
 
 ## Explore
 
@@ -23,4 +23,4 @@ Navigate the sections below to configure and use `nodeos`.
 * [Troubleshooting](08_troubleshooting/index.md) - Common `nodeos` troubleshooting questions.
 
 [[info | Access Node]]
-| A local or remote Antelope access node running `nodeos` is required for a client application or smart contract to interact with the blockchain.
+| A local or remote Vexanium access node running `nodeos` is required for a client application or smart contract to interact with the blockchain.

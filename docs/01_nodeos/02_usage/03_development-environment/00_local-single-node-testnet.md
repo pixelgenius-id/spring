@@ -12,11 +12,11 @@ This section describes how to set up a single-node blockchain configuration runn
 
 ## Before you begin
 
-* [Install the Antelope software](../../../00_install/index.md) before starting this section.
+* [Install the Vexanium software](../../../00_install/index.md) before starting this section.
 * It is assumed that `nodeos`, `cleos`, and `keosd` are accessible through the path.  
 
 [//]: # (THIS IS A COMMENT, NEXT LINK HAS BROKEN LINK)  
-[//]: # (If you built Antelope using shell scripts, make sure to run the Install Script ../../../00_install/01_build-from-source/01_shell-scripts/03_install-antelope-binaries.md .)  
+[//]: # (If you built Vexanium using shell scripts, make sure to run the Install Script ../../../00_install/01_build-from-source/01_shell-scripts/03_install-antelope-binaries.md .)  
 
 * Know how to pass [Nodeos options](../../02_usage/00_nodeos-options.md) to enable or disable functionality.
 
@@ -32,11 +32,11 @@ Open one "terminal" window and perform the following steps:
 Start your own single-node blockchain with this single command:
 
 ```sh
-nodeos -e -p eosio --plugin eosio::chain_api_plugin --plugin eosio::history_api_plugin
+nodeos -e -p vexcore --plugin vexcore::chain_api_plugin --plugin vexcore::history_api_plugin
 ```
 
 [[info | Nodeos Minimal Options]]
-| A minimal `nodeos` instance setup for block production requires both `chain_api_plugin` and `history_api_plugin` with the `-e` option (enable stale production) and `-p eosio` option (producer name `eosio`). Alternatively, you can also setup and specify your own account as the producer name.
+| A minimal `nodeos` instance setup for block production requires both `chain_api_plugin` and `history_api_plugin` with the `-e` option (enable stale production) and `-p vexcore` option (producer name `vexcore`). Alternatively, you can also setup and specify your own account as the producer name.
 
 After running `nodeos`, you should get log messages similar as below. It means the blocks are successfully produced.
 
@@ -46,11 +46,11 @@ After running `nodeos`, you should get log messages similar as below. It means t
 1578001ms thread-0   chain_controller.cpp:235      _push_block          ] initc #2 @2017-09-04T04:26:18  | 0 trx, 0 pending, exectime_ms=0
 1578001ms thread-0   producer_plugin.cpp:207       block_production_loo ] initc generated block #2 @ 2017-09-04T04:26:18 with 0 trxs  0 pending
 ...
-eosio generated block 046b9984... #101527 @ 2018-04-01T14:24:58.000 with 0 trxs
-eosio generated block 5e527ee2... #101528 @ 2018-04-01T14:24:58.500 with 0 trxs
+vexcore generated block 046b9984... #101527 @ 2018-04-01T14:24:58.000 with 0 trxs
+vexcore generated block 5e527ee2... #101528 @ 2018-04-01T14:24:58.500 with 0 trxs
 ...
 ```
-At this point, `nodeos` is running with a single producer, `eosio`.
+At this point, `nodeos` is running with a single producer, `vexcore`.
 
 ### 2. Get Node Info
 
@@ -71,7 +71,7 @@ This should produce output that looks similar to this:
   "last_irreversible_block_id": "00000085060e9872849ef87bef3b19ab07de9faaed71154510c7f0aeeaddae2c",
   "head_block_id": "000000861e3222dce1c7c2cfb938940d8aac22c816cc8b0b89f6bf65a8ad5bdc",
   "head_block_time": "2019-11-18T22:13:10.500",
-  "head_block_producer": "eosio",
+  "head_block_producer": "vexcore",
   "virtual_block_cpu_limit": 228396,
   "virtual_block_net_limit": 1197744,
   "block_cpu_limit": 199900,
@@ -87,8 +87,8 @@ This should produce output that looks similar to this:
 
 The more advanced user will likely have need to modify the configuration.  `nodeos` uses a custom configuration folder.  The location of this folder is determined by your system.
 
-* Mac OS: `~/Library/Application\ Support/eosio/nodeos/config`
-* Linux: `~/.local/share/eosio/nodeos/config`
+* Mac OS: `~/Library/Application\ Support/vexcore/nodeos/config`
+* Linux: `~/.local/share/vexcore/nodeos/config`
 
 The build seeds this folder with a default `genesis.json` file.  A configuration folder can be specified using the `--config-dir` command line argument to `nodeos`.  If you use this option, you will need to manually copy a `genesis.json` file to your config folder.
 
@@ -100,13 +100,13 @@ The build seeds this folder with a default `genesis.json` file.  A configuration
     # Enable production on a stale chain, since a single-node test chain is pretty much always stale
     enable-stale-production = true
     # Enable block production with the testnet producers
-    producer-name = eosio
+    producer-name = vexcore
     # Load the block producer plugin, so you can produce blocks
-    plugin = eosio::producer_plugin
+    plugin = vexcore::producer_plugin
     # As well as API and HTTP plugins
-    plugin = eosio::chain_api_plugin
-    plugin = eosio::http_plugin
-    plugin = eosio::history_api_plugin
+    plugin = vexcore::chain_api_plugin
+    plugin = vexcore::http_plugin
+    plugin = vexcore::history_api_plugin
 ```
 
 Now it should be possible to run `nodeos` and see it begin producing blocks.
@@ -117,8 +117,8 @@ nodeos
 
 `nodeos` stores runtime data (e.g., shared memory and log content) in a custom data folder.  The location of this folder is determined by your system.
 
-* Mac OS: `~/Library/Application\ Support/eosio/nodeos/data`
-* Linux: `~/.local/share/eosio/nodeos/data`
+* Mac OS: `~/Library/Application\ Support/vexcore/nodeos/data`
+* Linux: `~/.local/share/vexcore/nodeos/data`
 
 A data folder can be specified using the `--data-dir` command line argument to `nodeos`.
 

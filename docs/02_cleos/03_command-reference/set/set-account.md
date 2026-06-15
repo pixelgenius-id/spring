@@ -2,7 +2,7 @@
 set parameters dealing with account permissions
 
 [[info | JSON input]]
-| This command involves specifying JSON input which depends on underlying class definitions. Therefore, such JSON input is subject to change in future versions of the Antelope software.
+| This command involves specifying JSON input which depends on underlying class definitions. Therefore, such JSON input is subject to change in future versions of the Vexanium software.
 
 ## Positionals
 - `account` _TEXT_ - The account to set/delete a permission authority for
@@ -13,9 +13,9 @@ set parameters dealing with account permissions
 
 `-h,--help` Print this help message and exit
 
-`--add-code` [code] add 'eosio.code' permission to specified permission authority
+`--add-code` [code] add 'vexcore.code' permission to specified permission authority
 
-`--remove-code` [code] remove 'eosio.code' permission from specified permission authority
+`--remove-code` [code] remove 'vexcore.code' permission from specified permission authority
 
 `-x,--expiration` _TEXT_ - set the time in seconds before a transaction expires, defaults to 30s
 

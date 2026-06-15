@@ -9,12 +9,12 @@ The `resource_monitor_plugin` monitors space usage in the computing system where
 
 ```console
 # config.ini
-plugin = eosio::resource_monitor_plugin
+plugin = vexcore::resource_monitor_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::resource_monitor_plugin [options]
+nodeos ... --plugin vexcore::resource_monitor_plugin [options]
 ```
 
 ## Configuration Options
@@ -22,7 +22,7 @@ nodeos ... --plugin eosio::resource_monitor_plugin [options]
 These can be specified from both the `nodeos` command-line or the `config.ini` file:
 
 ```console
-Config Options for eosio::resource_monitor_plugin:
+Config Options for vexcore::resource_monitor_plugin:
   --resource-monitor-interval-seconds arg (=2)
                                         Time in seconds between two consecutive
                                         checks of resource usage. Should be

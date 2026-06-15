@@ -6,11 +6,11 @@ The `chain_api_plugin` exposes functionality from the [`chain_plugin`](../chain_
 
 ```console
 # config.ini
-plugin = eosio::chain_api_plugin
+plugin = vexcore::chain_api_plugin
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_api_plugin
+nodeos ... --plugin vexcore::chain_api_plugin
 ```
 
 ## Options
@@ -26,13 +26,13 @@ None
 
 ```console
 # config.ini
-plugin = eosio::chain_plugin
+plugin = vexcore::chain_plugin
 [options]
-plugin = eosio::http_plugin
+plugin = vexcore::http_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_plugin [operations] [options]  \
-           --plugin eosio::http_plugin [options]
+nodeos ... --plugin vexcore::chain_plugin [operations] [options]  \
+           --plugin vexcore::http_plugin [options]
 ```

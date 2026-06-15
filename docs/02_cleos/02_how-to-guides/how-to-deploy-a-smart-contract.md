@@ -1,6 +1,6 @@
 ## Goal
 
-Deploy an Antelope contract
+Deploy an Vexanium contract
 
 ## Before you begin
 

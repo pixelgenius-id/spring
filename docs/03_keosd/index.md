@@ -8,11 +8,11 @@ content_title: Keosd
 
 ## Installation
 
-`keosd` is distributed as part of the [Antelope software suite](https://github.com/AntelopeIO/spring). To install `keosd` just visit the [Antelope Software Installation](../00_install/index.md) section.
+`keosd` is distributed as part of the [Vexanium software suite](https://github.com/pixelgenius-id/spring). To install `keosd` just visit the [Vexanium Software Installation](../00_install/index.md) section.
 
 ## Operation
 
 When a wallet is unlocked with the corresponding password, `cleos` can request `keosd` to sign a transaction with the appropriate private keys. Also, `keosd` provides support for hardware-based wallets such as Secure Encalve and YubiHSM.
 
 [[info | Audience]]
-| `keosd` is intended to be used by Antelope developers only.
+| `keosd` is intended to be used by Vexanium developers only.

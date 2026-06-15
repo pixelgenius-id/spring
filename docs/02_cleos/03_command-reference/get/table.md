@@ -31,10 +31,10 @@ Retrieves the contents of a database table
 `--show-payer` - Show RAM payer
 
 ## Example
-Get the data from the accounts table for the eosio.token contract, for user eosio,
+Get the data from the accounts table for the vex.token contract, for user vexcore,
 
 ```sh
-cleos get table eosio.token eosio accounts
+cleos get table vex.token vexcore accounts
 ```
 ```json
 {

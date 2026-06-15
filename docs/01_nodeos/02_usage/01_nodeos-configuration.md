@@ -6,12 +6,12 @@ The plugin-specific options can be configured using either CLI options or a conf
 
 Each `config.ini` option has a corresponding CLI option. However, not all CLI options are available in `config.ini`. For instance, most plugin-specific options that perform actions are not available in `config.ini`, such as `--delete-state-history` from `state_history_plugin`.
 
-For example, the CLI option `--plugin eosio::chain_api_plugin` can also be set by adding `plugin = eosio::chain_api_plugin` in `config.ini`.
+For example, the CLI option `--plugin vexcore::chain_api_plugin` can also be set by adding `plugin = vexcore::chain_api_plugin` in `config.ini`.
 
 ## `config.ini` location
 
 The default `config.ini` can be found in the following folder on Linux:
-`~/.local/share/eosio/nodeos/config`
+`~/.local/share/vexcore/nodeos/config`
 
 A custom `config.ini` file can be set by passing the `nodeos` option `--config path/to/config.ini`.
 
@@ -21,13 +21,13 @@ The example below shows a typical usage of `nodeos` when starting a block produc
 
 ```sh
 nodeos \
-  -e -p eosio \
-  --data-dir /users/mydir/eosio/data     \
-  --config-dir /users/mydir/eosio/config \
-  --plugin eosio::producer_plugin      \
-  --plugin eosio::chain_plugin         \
-  --plugin eosio::http_plugin          \
-  --plugin eosio::state_history_plugin \
+  -e -p vexcore \
+  --data-dir /users/mydir/vexcore/data     \
+  --config-dir /users/mydir/vexcore/config \
+  --plugin vexcore::producer_plugin      \
+  --plugin vexcore::chain_plugin         \
+  --plugin vexcore::http_plugin          \
+  --plugin vexcore::state_history_plugin \
   --contracts-console   \
   --access-control-allow-origin='*' \
   --http-validate-host=false        \
@@ -41,7 +41,7 @@ nodeos \
 The above `nodeos` command starts a producing node by:
 
 * enabling block production (`-e`)
-* identifying itself as block producer "eosio" (`-p`)
+* identifying itself as block producer "vexcore" (`-p`)
 * setting the blockchain data directory (`--data-dir`)
 * setting the `config.ini` directory (`--config-dir`)
 * loading plugins `producer_plugin`, `chain_plugin`, `http_plugin`, `state_history_plugin` (`--plugin`)

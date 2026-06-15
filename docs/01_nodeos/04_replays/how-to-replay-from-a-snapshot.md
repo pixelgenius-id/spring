@@ -13,9 +13,9 @@ You can use `snapshots-dir = "snapshots" ` in the configuration file or using th
 
 ```sh
 nodeos --snapshot yoursnapshot.name \
-  --plugin eosio::producer_plugin  \
-  --plugin eosio::chain_api_plugin \
-  --plugin eosio::http_plugin      \
+  --plugin vexcore::producer_plugin  \
+  --plugin vexcore::chain_api_plugin \
+  --plugin vexcore::http_plugin      \
   >> nodeos.log 2>&1 &
 ```
 

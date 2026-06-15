@@ -1,6 +1,6 @@
 ## Description
 
-Send eosio.system contract action to the blockchain.
+Send vexcore contract action to the blockchain.
 
 ## Subcommands
 

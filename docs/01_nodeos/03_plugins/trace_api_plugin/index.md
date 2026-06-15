@@ -5,11 +5,11 @@ The `trace_api_plugin` provides a consumer-focused long-term API for retrieving 
 
 ## Purpose
 
-While integrating applications such as block explorers and exchanges with an Antelope blockchain, the user might require a complete transcript of actions processed by the blockchain, including those spawned from the execution of smart contracts and scheduled transactions. The `trace_api_plugin` serves this need. The purpose of the plugin is to provide:
+While integrating applications such as block explorers and exchanges with an Vexanium blockchain, the user might require a complete transcript of actions processed by the blockchain, including those spawned from the execution of smart contracts and scheduled transactions. The `trace_api_plugin` serves this need. The purpose of the plugin is to provide:
 
 * A transcript of retired actions and related metadata
 * A consumer-focused long-term API to retrieve blocks
-* Maintainable resource commitments at the Antelope nodes
+* Maintainable resource commitments at the Vexanium nodes
 
 Therefore, one crucial goal of the `trace_api_plugin` is to improve the maintenance of node resources (file system, disk space, memory used, etc.). This goal is different from the existing `history_plugin` which provides far more configurable filtering and querying capabilities, or the existing `state_history_plugin` which provides a binary streaming interface to access structural chain data, action data, as well as state deltas.
 
@@ -17,12 +17,12 @@ Therefore, one crucial goal of the `trace_api_plugin` is to improve the maintena
 
 ```console
 # config.ini
-plugin = eosio::trace_api_plugin
+plugin = vexcore::trace_api_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::trace_api_plugin [options]
+nodeos ... --plugin vexcore::trace_api_plugin [options]
 ```
 
 ## Configuration Options
@@ -30,7 +30,7 @@ nodeos ... --plugin eosio::trace_api_plugin [options]
 These can be specified from both the `nodeos` command-line or the `config.ini` file:
 
 ```console
-Config Options for eosio::trace_api_plugin:
+Config Options for vexcore::trace_api_plugin:
 
   --trace-dir arg (="traces")           the location of the trace directory 
                                         (absolute path or relative to 
@@ -88,29 +88,29 @@ The following plugins are loaded with default settings if not specified on the c
 
 ```console
 # config.ini
-plugin = eosio::chain_plugin
+plugin = vexcore::chain_plugin
 [options]
-plugin = eosio::http_plugin 
+plugin = vexcore::http_plugin 
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_plugin [options]  \
-           --plugin eosio::http_plugin [options]
+nodeos ... --plugin vexcore::chain_plugin [options]  \
+           --plugin vexcore::http_plugin [options]
 ```
 
 ## Configuration Example
 
-Here is a `nodeos` configuration example for the `trace_api_plugin` when tracing some Antelope reference contracts:
+Here is a `nodeos` configuration example for the `trace_api_plugin` when tracing some Vexanium reference contracts:
 
 ```sh
 nodeos --data-dir data_dir --config-dir config_dir --trace-dir traces_dir
---plugin eosio::trace_api_plugin 
---trace-rpc-abi=eosio=abis/eosio.abi 
---trace-rpc-abi=eosio.token=abis/eosio.token.abi 
---trace-rpc-abi=eosio.token=abis/core.vaulta.abi 
---trace-rpc-abi=eosio.msig=abis/eosio.msig.abi 
---trace-rpc-abi=eosio.wrap=abis/eosio.wrap.abi
+--plugin vexcore::trace_api_plugin 
+--trace-rpc-abi=vexcore=abis/vexcore.abi 
+--trace-rpc-abi=vex.token=abis/vex.token.abi 
+--trace-rpc-abi=vex.token=abis/core.vaulta.abi 
+--trace-rpc-abi=vex.msig=abis/vex.msig.abi 
+--trace-rpc-abi=vexcore.wrap=abis/vexcore.wrap.abi
 ```
 
 ## Definitions
@@ -192,7 +192,7 @@ If resource usage cannot be effectively managed via the `trace-minimum-irreversi
 
 ## Manual Maintenance
 
-The `trace-dir` option defines the directory on the filesystem where the trace log files are stored by the `trace_api_plugin`. These files are stable once the LIB block has progressed past a given slice and then can be deleted at any time to reclaim filesystem space. The deployed Antelope system will tolerate any out-of-process management system that removes some or all of these files in this directory regardless of what data they represent, or whether there is a running `nodeos` instance accessing them or not.  Data which would nominally be available, but is no longer so due to manual maintenance, will result in a HTTP 404 response from the appropriate API endpoint(s).
+The `trace-dir` option defines the directory on the filesystem where the trace log files are stored by the `trace_api_plugin`. These files are stable once the LIB block has progressed past a given slice and then can be deleted at any time to reclaim filesystem space. The deployed Vexanium system will tolerate any out-of-process management system that removes some or all of these files in this directory regardless of what data they represent, or whether there is a running `nodeos` instance accessing them or not.  Data which would nominally be available, but is no longer so due to manual maintenance, will result in a HTTP 404 response from the appropriate API endpoint(s).
 
 [[info | For node operators]]
 | Node operators can take full control over the lifetime of the historical data available in their nodes via the `trace-api-plugin` and the `trace-minimum-irreversible-history-blocks` and `trace-minimum-uncompressed-irreversible-history-blocks` options in conjunction with any external filesystem resource manager.

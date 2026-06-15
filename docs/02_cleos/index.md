@@ -4,15 +4,15 @@ content_title: Cleos
 
 ## Introduction
 
-`cleos` is a command line tool that interfaces with the REST API exposed by `nodeos`. Developers can also use `cleos` to deploy and test Antelope smart contracts.
+`cleos` is a command line tool that interfaces with the REST API exposed by `nodeos`. Developers can also use `cleos` to deploy and test Vexanium smart contracts.
 
 ## Installation
 
-`cleos` is distributed as part of the [Antelope software suite](https://github.com/AntelopeIO/spring). To install `cleos` just visit the [Antelope Software Installation](../00_install/index.md) section.
+`cleos` is distributed as part of the [Vexanium software suite](https://github.com/pixelgenius-id/spring). To install `cleos` just visit the [Vexanium Software Installation](../00_install/index.md) section.
 
 ## Using Cleos
 
-To use `cleos`, you need the end point (IP address and port number) of a running `nodeos` instance. Also, the `nodeos` instance must be configured to load the `eosio::chain_api_plugin` when launched. This allows `nodeos` to respond to the RPC requests coming from `cleos`.
+To use `cleos`, you need the end point (IP address and port number) of a running `nodeos` instance. Also, the `nodeos` instance must be configured to load the `vexcore::chain_api_plugin` when launched. This allows `nodeos` to respond to the RPC requests coming from `cleos`.
 
 ### Cleos Commands
 
@@ -23,14 +23,14 @@ cleos --help
 ```
 
 ```console
-Command Line Interface to Antelope Client
+Command Line Interface to Vexanium Client
 Usage: cleos [OPTIONS] SUBCOMMAND
 
 Options:
   -h,--help                   Print this help message and exit
   -u,--url TEXT=http://127.0.0.1:8888/
                               the http/https URL where nodeos is running
-  --wallet-url TEXT=unix:///Users/username/eosio-wallet/keosd.sock
+  --wallet-url TEXT=unix:///Users/username/vexcore-wallet/keosd.sock
                               the http/https URL where keosd is running
   -r,--header                 pass specific HTTP header; repeat this option to pass multiple headers
   -n,--no-verify              don't verify peer certificate when using HTTPS
@@ -52,7 +52,7 @@ Subcommands:
   push                        Push arbitrary transactions to the blockchain
   multisig                    Multisig contract commands
   wrap                        Wrap contract commands
-  system                      Send eosio.system contract action to the blockchain.
+  system                      Send vexcore contract action to the blockchain.
 ```
 
 ### Cleos Subcommands

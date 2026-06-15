@@ -10,11 +10,11 @@ The `producer_plugin` loads functionality required for a node to produce blocks.
 
 ```console
 # config.ini
-plugin = eosio::producer_plugin [options]
+plugin = vexcore::producer_plugin [options]
 ```
 ```sh
 # nodeos startup params
-nodeos ... -- plugin eosio::producer_plugin [options]
+nodeos ... -- plugin vexcore::producer_plugin [options]
 ```
 
 ## Options
@@ -22,7 +22,7 @@ nodeos ... -- plugin eosio::producer_plugin [options]
 These can be specified from both the `nodeos` command-line or the `config.ini` file:
 
 ```console
-Config Options for eosio::producer_plugin:
+Config Options for vexcore::producer_plugin:
   -e [ --enable-stale-production ]      Enable block production, even if the
                                         chain is stale.
   -x [ --pause-on-startup ]             Start this node in a state where
@@ -54,7 +54,7 @@ Config Options for eosio::producer_plugin:
                                         <public-key>=<provider-spec>
                                         Where:
                                            <public-key>    is a string form of
-                                                           a valid Antelope
+                                                           a valid Vexanium
                                                            public key,
                                                            including BLS
                                                            finalizer key
@@ -63,7 +63,7 @@ Config Options for eosio::producer_plugin:
                                                            :<data>
                                            <provider-type> is KEY, KEOSD, or SE
                                            KEY:<data>      is a string form of
-                                                           a valid Antelope
+                                                           a valid Vexanium
                                                            private key which
                                                            maps to the provided
                                                            public key
@@ -146,11 +146,11 @@ Config Options for eosio::producer_plugin:
 
 ```console
 # config.ini
-plugin = eosio::chain_plugin [operations] [options]
+plugin = vexcore::chain_plugin [operations] [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_plugin [operations] [options]
+nodeos ... --plugin vexcore::chain_plugin [operations] [options]
 ```
 
 For details about how blocks are produced please read the following [block producing explainer](10_block-producing-explained.md).

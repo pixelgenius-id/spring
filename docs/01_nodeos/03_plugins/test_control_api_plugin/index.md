@@ -7,11 +7,11 @@ The `test_control_api_plugin` allows to send a control message to the [test_cont
 
 ```console
 # config.ini
-plugin = eosio::test_control_api_plugin
+plugin = vexcore::test_control_api_plugin
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::test_control_api_plugin
+nodeos ... --plugin vexcore::test_control_api_plugin
 ```
 
 ## Options
@@ -34,13 +34,13 @@ curl %s/v1/test_control/kill_node_on_producer -d '{ \"producer\":\"%s\", \"where
 
 ```console
 # config.ini
-plugin = eosio::chain_plugin
+plugin = vexcore::chain_plugin
 [options]
-plugin = eosio::http_plugin
+plugin = vexcore::http_plugin
 [options]
 ```
 ```sh
 # command-line
-nodeos ... --plugin eosio::chain_plugin [operations] [options]  \
-           --plugin eosio::http_plugin [options]
+nodeos ... --plugin vexcore::chain_plugin [operations] [options]  \
+           --plugin vexcore::http_plugin [options]
 ```
