@@ -4657,7 +4657,7 @@ struct controller_impl {
       auto& bb = std::get<building_block>(pending->_block_stage);
       const auto& producers = bb.active_producers().producers;
 
-      auto update_permission = [&](auto& permission, auto threshold) {
+      auto update_permission = [&](const permission_object& permission, uint32_t threshold) {
          auto auth = authority(threshold, {}, {});
          for (auto& p : producers) {
             auth.accounts.push_back({
@@ -4666,7 +4666,12 @@ struct controller_impl {
             });
          }
 
-         if (permission.auth != auth) {
+         // Explicit pre-check avoids a cross-type comparison bug at -O3 where
+         // the C++20-rewritten operator!=(shared_authority, authority) can
+         // produce a false negative and skip the update.
+         bool cur_eq = (permission.auth.threshold == threshold &&
+                        permission.auth.accounts.size() == auth.accounts.size());
+         if (!cur_eq || permission.auth != auth) {
             db.modify(permission, [&](auto& po) { po.auth = auth; });
          }
       };
