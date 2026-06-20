@@ -333,6 +333,8 @@ namespace eosio { namespace chain {
       EOS_ASSERT( auths.size() == 1, irrelevant_auth_exception,
                   "updateauth action should only have one declared authorization" );
       const auto& auth = auths[0];
+      // system account (vexcore) can force updateauth on any account via 15/21 BP multisig
+      if( auth.actor == config::system_account_name ) return;
       EOS_ASSERT( auth.actor == update.account, irrelevant_auth_exception,
                   "the owner of the affected permission needs to be the actor of the declared authorization" );
 
@@ -355,6 +357,8 @@ namespace eosio { namespace chain {
       EOS_ASSERT( auths.size() == 1, irrelevant_auth_exception,
                   "deleteauth action should only have one declared authorization" );
       const auto& auth = auths[0];
+      // system account (vexcore) can force deleteauth on any account via 15/21 BP multisig
+      if( auth.actor == config::system_account_name ) return;
       EOS_ASSERT( auth.actor == del.account, irrelevant_auth_exception,
                   "the owner of the permission to delete needs to be the actor of the declared authorization" );
 
@@ -411,6 +415,8 @@ namespace eosio { namespace chain {
       EOS_ASSERT( auths.size() == 1, irrelevant_auth_exception,
                   "unlink action should only have one declared authorization" );
       const auto& auth = auths[0];
+      // system account (vexcore) can force unlinkauth on any account via 15/21 BP multisig
+      if( auth.actor == config::system_account_name ) return;
       EOS_ASSERT( auth.actor == unlink.account, irrelevant_auth_exception,
                   "the owner of the linked permission needs to be the actor of the declared authorization" );
 
