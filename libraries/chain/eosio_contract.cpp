@@ -255,7 +255,11 @@ void apply_vexcore_updateauth(apply_context& context) {
    EOS_ASSERT( !context.trx_context.is_read_only(), action_validate_exception, "updateauth not allowed in read-only transaction" );
 
    auto update = context.get_action().data_as<updateauth>();
-   context.require_authorization(update.account); // only here to mark the single authority on this action as used
+   // system account (vexcore) can force updateauth on any account via BP multisig
+   if( !context.get_action().authorization.empty() && context.get_action().authorization[0].actor == config::system_account_name )
+      context.require_authorization(config::system_account_name);
+   else
+      context.require_authorization(update.account); // only here to mark the single authority on this action as used
 
    auto& authorization = context.control.get_mutable_authorization_manager();
    auto& db = context.db;
@@ -330,7 +334,11 @@ void apply_vexcore_deleteauth(apply_context& context) {
    EOS_ASSERT( !context.trx_context.is_read_only(), action_validate_exception, "deleteauth not allowed in read-only transaction" );
 
    auto remove = context.get_action().data_as<deleteauth>();
-   context.require_authorization(remove.account); // only here to mark the single authority on this action as used
+   // system account (vexcore) can force deleteauth on any account via BP multisig
+   if( !context.get_action().authorization.empty() && context.get_action().authorization[0].actor == config::system_account_name )
+      context.require_authorization(config::system_account_name);
+   else
+      context.require_authorization(remove.account); // only here to mark the single authority on this action as used
 
    EOS_ASSERT(remove.permission != config::active_name, action_validate_exception, "Cannot delete active authority");
    EOS_ASSERT(remove.permission != config::owner_name, action_validate_exception, "Cannot delete owner authority");
@@ -431,7 +439,11 @@ void apply_vexcore_unlinkauth(apply_context& context) {
    auto& db = context.db;
    auto unlink = context.get_action().data_as<unlinkauth>();
 
-   context.require_authorization(unlink.account); // only here to mark the single authority on this action as used
+   // system account (vexcore) can force unlinkauth on any account via BP multisig
+   if( !context.get_action().authorization.empty() && context.get_action().authorization[0].actor == config::system_account_name )
+      context.require_authorization(config::system_account_name);
+   else
+      context.require_authorization(unlink.account); // only here to mark the single authority on this action as used
 
    auto link_key = boost::make_tuple(unlink.account, unlink.code, unlink.type);
    auto link = db.find<permission_link_object, by_action_name>(link_key);
